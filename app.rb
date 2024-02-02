@@ -1,0 +1,1 @@
+require './models/produto.model'
