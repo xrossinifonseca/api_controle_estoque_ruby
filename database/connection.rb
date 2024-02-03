@@ -1,6 +1,6 @@
 require 'active_record'
 require 'dotenv'
- Dotenv.load
+ Dotenv.load('../.env')
 
 
 
@@ -12,5 +12,6 @@ db_config = {
   password: ENV['PASSWORD'],
   port: ENV['PORT']
 }
+
 
 ActiveRecord::Base.establish_connection(db_config)
