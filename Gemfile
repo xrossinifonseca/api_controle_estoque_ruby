@@ -9,3 +9,5 @@ gem 'mysql2'
 gem 'dotenv'
 
 gem "sinatra"
+
+gem 'sinatra-contrib'
