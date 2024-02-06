@@ -1,4 +1,4 @@
-require '../models/products'
+require './models/products'
 
 class ProductsController
 

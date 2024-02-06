@@ -1,4 +1,4 @@
-require '../database/connection'
+require './database/connection'
 
 class Products< ActiveRecord::Base
 
@@ -13,6 +13,7 @@ class Products< ActiveRecord::Base
     begin
       self.attributes = data
       save!
+
     rescue ActiveRecord::RecordInvalid => e
       raise ArgumentError, e.message
     end

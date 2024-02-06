@@ -1,6 +1,6 @@
 require 'active_record'
 require 'dotenv'
- Dotenv.load('../.env')
+ Dotenv.load('./.env')
 
 
 
