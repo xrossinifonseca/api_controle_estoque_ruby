@@ -1,7 +1,9 @@
-require_relative './controllers/products.controller'
 require 'sinatra'
 require 'sinatra/namespace'
 require 'json'
+require 'dotenv/load'
+
+require_relative './controllers/product.controller'
 
 set :port, ENV['SERVER_PORT']
 

@@ -1,7 +1,6 @@
 require './database/connection'
 
-class Products< ActiveRecord::Base
-
+class Products < ActiveRecord::Base
 
   validates :name, presence: {message: 'O nome não pode estar em branco'}
   validates :description, presence: { message: "A descrição não pode estar em branco" }
@@ -18,5 +17,4 @@ class Products< ActiveRecord::Base
       raise ArgumentError, e.message
     end
   end
-
 end

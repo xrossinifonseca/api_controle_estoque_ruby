@@ -1,6 +1,6 @@
-require './database/connection'
+require_relative './database/connection'
 
-class Movements_model < ActiveRecord::Base
+class Movements < ActiveRecord::Base
 
 
 end
