@@ -8,10 +8,12 @@ class Products < ActiveRecord::Base
   validates :quantity, presence: { message: "A quantidade não pode estar em branco" }, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "A quantidade deve ser um número inteiro maior ou igual a zero" }
 
 
-  def store_product(data)
+  def self.store(data)
     begin
-      self.attributes = data
-      save!
+      product = new(data)
+      product.save!
+      product
+
     rescue ActiveRecord::RecordInvalid => e
       raise ArgumentError, e.message
     end
