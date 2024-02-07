@@ -1,30 +1,20 @@
-require 'sinatra'
-require 'sinatra/namespace'
-require 'json'
 require 'dotenv/load'
-
-require_relative './controllers/product.controller'
-
-set :port, ENV['SERVER_PORT']
-
-products_controller = ProductsController.new
-
-get "/" do
-
-  "hello world".to_json
-
-end
+require_relative 'routes/products_route'
+require 'sinatra/namespace'
 
 
-namespace '/api/v1' do
+class Server < Sinatra::Base
 
-  before do
-    content_type 'application/json'
+  use ProductsRoutes
+
+  configure do
+    set :port, ENV['SERVER_PORT']
   end
 
-
-  get '/products' do
-    "todos os produtos".to_json
+  not_found do
+    status 404
+    { error: 'Rota não encontrada' }.to_json
   end
 
+  run! if app_file == $0
 end
