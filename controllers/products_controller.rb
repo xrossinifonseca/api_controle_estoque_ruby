@@ -11,4 +11,15 @@ class ProductsController
     Products.all
   end
 
+  def show(id)
+
+    product = Products.find_by(id: id)
+    if product.nil?
+      raise ArgumentError, "Produto não encontrado"
+    end
+
+    product
+
+  end
+
 end
