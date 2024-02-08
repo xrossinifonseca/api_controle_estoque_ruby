@@ -36,7 +36,21 @@ class ProductsRoutes < Sinatra::Base
     rescue => e
       handle_error(400,e.message)
     end
+  end
 
+
+
+  get '/products/:id' do
+
+    begin
+    product = ProductsController.new.show(params[:id])
+    product.to_json
+
+  rescue ArgumentError => e
+    handle_error(404, e.message)
+  rescue StandardError => e
+    handle_error(500, "Erro interno no servidor: #{e.message}")
+  end
   end
 
   error do
@@ -50,4 +64,5 @@ class ProductsRoutes < Sinatra::Base
     { success: false, message: message, status: status }.to_json
   end
 
+  private
 end
