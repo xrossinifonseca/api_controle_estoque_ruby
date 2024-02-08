@@ -29,12 +29,14 @@ class ProductsRoutes < Sinatra::Base
 
 
   get '/products/all' do
+    begin
     all =  ProductsController.new.find_all
     all.to_json
-  end
 
-  not_found do
-    handle_error(404, 'Rota não encontrada')
+    rescue => e
+      handle_error(400,e.message)
+    end
+
   end
 
   error do
